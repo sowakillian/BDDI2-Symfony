@@ -3,10 +3,28 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            <header>
+                {% block header %}{% endblock %}
+            </header>
+            <main>
+                {% block main %}{% endblock %}
+
+                <div class="otherpage">
+                    {{ include('task/new.html.twig') }}
+                </div>
+            </main>
+            <aside>
+                {% block aside %}{% endblock %}
+            </aside>
+            <footer>
+                {% block footer %}{% endblock %}
+            </footer>
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

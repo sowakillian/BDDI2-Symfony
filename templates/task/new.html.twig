@@ -1,1 +1,18 @@
-{{ form(form) }}
+{% extends "base.html.twig" %}
+{% import "error.html.twig" as error %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .test { color: red; }
+    </style>
+{% endblock %}
+{% block body %}
+    <p class="test">cc</p>
+    <p>Current locale : {{ app.request.locale }}</p>
+    Param search : {{ app.request.get('search') }}
+
+    {% for message in app.flashes('error') %}
+        <p>Flash error {{ error.error(message) }}</p>
+    {% endfor %}
+
+{% endblock %}

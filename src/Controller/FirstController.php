@@ -4,8 +4,9 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class FirstController
+class FirstController extends AbstractController
 {
     /**
     * @Route("/first")
@@ -14,8 +15,10 @@ class FirstController
     {
         $number = random_int(0, 100);
 
-        return new Response(
-            '<html><body>Random number: '.$number.'</body></html>'
-        );
+        $contents =  $this->renderView('base.html.twig');
+
+        $this->addFlash('error', 'Test Flash Error');
+
+        return new Response($contents);
     }
 }
